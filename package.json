@@ -1,0 +1,22 @@
+{
+  "name": "coupons-poc-reactjs",
+  "version": "1.0.0",
+  "description": "React.js front end for coupon app proof of concept",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/osoco/coupons-poc-reactjs.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "geli.crick@osoco.es",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osoco/coupons-poc-reactjs/issues"
+  },
+  "homepage": "https://github.com/osoco/coupons-poc-reactjs#readme"
+}
