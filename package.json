@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/osoco/coupons-poc-reactjs/issues"
   },
-  "homepage": "https://github.com/osoco/coupons-poc-reactjs#readme"
+  "homepage": "https://github.com/osoco/coupons-poc-reactjs#readme",
+  "devDependencies": {
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "kotatsu": "^0.13.0"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  }
 }
