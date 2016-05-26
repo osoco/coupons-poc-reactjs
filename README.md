@@ -56,6 +56,7 @@ These are the dependencies we've pulled in with npm for development (they aren't
 * style-loader: Injects `<style>` tags in the DOM. Used during development so styles are hot-reloaded along with modules.
 * file-loader: exports static files
 * url-loader: can in-line small files as data urls
+* babel-plugin-syntax-object-rest-spread, babel-plugin-transform-object-rest-spread: allow using the spread operator for js objects: (...object)
 
 TODO: check HtmlwebpackPlugin, CommonsChunkPlugin
 
@@ -77,3 +78,48 @@ These are the npm dependencies that are needed at runtime.
 * react-redux: React bindings for Redux
 * immutable: Immutable data structures
 * node-uuid: UUID generator
+
+
+## Extras
+
+### Chrome extensions to help with debugging
+
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+
+[Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+
+### Editor support
+
+#### Sublime Text Packages
+
+[Babel](https://packagecontrol.io/packages/Babel)
+
+[Babel Snippets](https://packagecontrol.io/packages/Babel%20Snippets)
+
+[Charcoal color scheme](https://packagecontrol.io/packages/Charcoal)
+
+[Oceanic Next Color Scheme](https://packagecontrol.io/packages/Oceanic%20Next%20Color%20Scheme)
+
+## TODO
+
+Look at https://github.com/acdlite/flux-standard-action, redux-act, redux-actions
+
+Look at redux-thunk
+
+Look at redial
+
+Look at http://redux.js.org/docs/recipes/ComputingDerivedData.html
+
+Look at normalizr
+
+Look at http://flowtype.org/
+
+Look at react-router and react-redux-router
+
+Tests!
+
+Folder organization
+
+Local storage
+
+Call REST API defined in Swagger contract

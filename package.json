@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/osoco/coupons-poc-reactjs#readme",
   "devDependencies": {
+    "babel-plugin-syntax-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "clean-webpack-plugin": "^0.1.9",
