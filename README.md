@@ -19,7 +19,17 @@ Start a hot-reloading development server with:
 
 Package the JavaScript for production with:
 
-    npm run-script build
+    npm run build
+
+(NOTE: this part still needs some work)
+
+Run all tests once with:
+
+    npm test
+
+Run tests continuously on change with:
+
+    npm run tdd
 
 ## Build tools
 
@@ -57,6 +67,7 @@ These are the dependencies we've pulled in with npm for development (they aren't
 * file-loader: exports static files
 * url-loader: can in-line small files as data urls
 * babel-plugin-syntax-object-rest-spread, babel-plugin-transform-object-rest-spread: allow using the spread operator for js objects: (...object)
+* react-addons-test-utils, isparta-instrumenter-loader, karma, karma-coverage, karma-mocha, karma-phantomjs-launcher, karma-sourcemap-loader, karma-spec-reporter, karma-webpack, mocha, phantomjs-prebuilt, phantomjs-polyfill, chai-immutable, chai-as-promised, dirty-chai, sinon, sinon-chai: Unit test dependencies. Karma is the test runner, Mocha is the framework, Chai is the assertion library, PhantomJS is a headless webkit, Sinon is a mocking library, and the rest are supporting libraries for those tools.
 
 TODO: check HtmlwebpackPlugin, CommonsChunkPlugin
 

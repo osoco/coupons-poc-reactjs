@@ -7,9 +7,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  test: path.join(__dirname, 'tests')
   // style: path.join(__dirname, 'app/main.css')
 };
+
+process.env.BABEL_ENV = TARGET;
 
 const extractCSS = new ExtractTextPlugin('styles/[name].[contenthash].css', {
     allChunks: true
@@ -65,6 +68,43 @@ else {
       loaders: [
         {
           // During development styles are bundled in modules
+          test: /\.scss$/,
+          loaders: ['style?sourceMap'].concat(scssLoaders)
+        }
+      ]
+    }
+  });
+}
+
+if(TARGET === 'test' || TARGET === 'tdd') {
+  module.exports = merge(common, {
+    devtool: 'inline-source-map',
+    resolve: {
+      alias: {
+        'app': PATHS.app
+      }
+    },
+    module: {
+      preLoaders: [
+      {
+        //           test: /(\.jsx)|(\.js)$/,
+        //           // exclude this dirs from coverage 
+        //           exclude: /(test|node_modules|bower_components)\//,
+        //           loader: 'isparta-instrumenter-loader'
+        //         }
+        // {
+          test: /\.jsx?$/,
+          loaders: ['isparta-instrumenter'],
+          include: PATHS.app
+        }
+      ],
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loaders: ['babel?cacheDirectory'],
+          include: PATHS.test
+        },
+        {
           test: /\.scss$/,
           loaders: ['style?sourceMap'].concat(scssLoaders)
         }
