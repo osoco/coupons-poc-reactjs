@@ -62,13 +62,21 @@ TODO: check HtmlwebpackPlugin, CommonsChunkPlugin
 
 ## Application
 
-Redux
+### Redux
 
-React
+### React
 
-Immutable
+### Immutable
 
-CSS Modules
+### CSS Modules
+
+### Routing
+
+[react-router](https://github.com/reactjs/react-router) provides a way to sync the view with the browser URL.
+
+[react-router-redux](https://github.com/reactjs/react-router-redux) syncs the URL (managed by react-router) with the store so that replaying actions in the debugger also updates the URL correctly.
+
+For now we are only using client-side routing. Server-side routing is possible, but requires quite a bit of configuration.
 
 ### Runtime dependencies
 
@@ -78,6 +86,8 @@ These are the npm dependencies that are needed at runtime.
 * react-redux: React bindings for Redux
 * immutable: Immutable data structures
 * node-uuid: UUID generator
+* react-router
+* react-router-redux
 
 
 ## Extras
@@ -114,7 +124,7 @@ Look at normalizr
 
 Look at http://flowtype.org/
 
-Look at react-router and react-redux-router
+Look at react-router and [react-router-redux](https://github.com/reactjs/react-router-redux)
 
 Tests!
 

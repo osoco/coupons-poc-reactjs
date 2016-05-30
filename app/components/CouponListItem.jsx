@@ -7,7 +7,7 @@ import React, { PropTypes } from 'react'
 
 
 // This is the function that will be called to display the component
-const Coupon = ({ code }) => (
+const CouponListItem = ({ code }) => (
   <li>
     {code}
   </li>
@@ -15,10 +15,10 @@ const Coupon = ({ code }) => (
 
 
 // These are the props the component expects to receive
-Coupon.propTypes = {
+CouponListItem.propTypes = {
   id: PropTypes.string.isRequired,
   code: PropTypes.string.isRequired
 }
 
 
-export default Coupon
+export default CouponListItem

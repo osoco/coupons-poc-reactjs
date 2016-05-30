@@ -2,8 +2,9 @@
 Creation logic for the Redux store.
 */
 
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 import appReducer from '../reducers/app';
+
 
 
 export default function configureStore(initialState) {

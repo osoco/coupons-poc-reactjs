@@ -6,23 +6,21 @@ This component has been written in React's class style.
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './app.scss';
-import FullCouponList from './containers/FullCouponList'
-
-
-// Requiring this image will cause Webpack to load it. Since it passes through
-// Webpack's loaders, it may be returned as a normal URL or, in this case, a
-// Data Url that will be embedded in the dom
-const inlineImage = require("../sampleInlineImage.png");
+import NavLink from './components/NavLink.jsx';
 
 
 class App extends Component {
   render() {
     return (
-        <div styleName='welcome'>
-            <h1>Hello World!</h1>
-            <img src={inlineImage} />
-            <div styleName='css-image-test'>There should be a background image here</div>
-            <FullCouponList />
+        <div>
+            <ul role="nav">
+                <li><NavLink to="/admin">Admin</NavLink></li>
+                <li><NavLink to="/shopping">Shop</NavLink></li>
+            </ul>
+            
+
+            {this.props.children}
+
         </div>
     );
   }
@@ -32,3 +30,5 @@ class App extends Component {
 // Note that once the spec stabilizes Babel will support annotation style 
 // syntax for this: @CSSModules(styles)
 export default CSSModules(App, styles);
+
+// <li><NavLink to="/" onlyActiveOnIndex={true}>Home</NavLink></li>

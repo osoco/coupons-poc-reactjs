@@ -6,14 +6,14 @@ This component has been written in React's functional style.
 import React, { PropTypes } from 'react'
 import CSSModules from 'react-css-modules';
 import styles from './couponList.scss';
-import Coupon from './Coupon.jsx'
+import CouponListItem from './CouponListItem.jsx'
 
 
 // This is the function that will be called to display the component
 const CouponList = ({ coupons }) => (
   <ul styleName='coupon-list'>
     {coupons.map(coupon =>
-      <Coupon
+      <CouponListItem
         key={coupon.id}
         {...coupon}
       />
