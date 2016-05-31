@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
@@ -49,7 +50,10 @@ if(TARGET === 'build') {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"'
       }),
-      extractCSS
+      extractCSS,
+      new HtmlWebpackPlugin({
+        template: 'index.html'
+      })
     ],
     module: {
       loaders: [
@@ -72,7 +76,12 @@ else {
           loaders: ['style?sourceMap'].concat(scssLoaders)
         }
       ]
-    }
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'index.html'
+      })
+    ]
   });
 }
 

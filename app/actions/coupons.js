@@ -33,3 +33,34 @@ export function deleteCoupon(id) {
         id
     };
 };
+
+
+
+
+export const LIST_COUPONS = 'LIST_COUPONS';
+
+export function listCoupons() {
+    return {
+        type: LIST_COUPONS
+    };
+};
+
+
+export const REQUEST_COUPONS = 'REQUEST_COUPONS'
+
+export function requestCoupons() {
+  return {
+    type: REQUEST_COUPONS
+  }
+}
+
+
+export const RECEIVE_COUPONS = 'RECEIVE_COUPONS'
+
+export function receiveCoupons(json) {
+  return {
+    type: RECEIVE_COUPONS,
+    coupons: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
+  }
+}

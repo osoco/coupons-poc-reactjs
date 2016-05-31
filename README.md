@@ -21,7 +21,7 @@ Package the JavaScript for production with:
 
     npm run build
 
-(NOTE: this part still needs some work)
+(NOTE: this part still needs some work - the current output doesn't run)
 
 Run all tests once with:
 
@@ -69,7 +69,7 @@ These are the dependencies we've pulled in with npm for development (they aren't
 * babel-plugin-syntax-object-rest-spread, babel-plugin-transform-object-rest-spread: allow using the spread operator for js objects: (...object)
 * react-addons-test-utils, isparta-instrumenter-loader, karma, karma-coverage, karma-mocha, karma-phantomjs-launcher, karma-sourcemap-loader, karma-spec-reporter, karma-webpack, mocha, phantomjs-prebuilt, phantomjs-polyfill, chai-immutable, chai-as-promised, dirty-chai, sinon, sinon-chai, enzyme chai-enzyme: Unit test dependencies.
 
-TODO: check HtmlwebpackPlugin, CommonsChunkPlugin
+TODO: check HtmlWebpackPlugin, CommonsChunkPlugin
 
 ## Testing
 
