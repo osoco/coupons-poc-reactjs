@@ -67,9 +67,25 @@ These are the dependencies we've pulled in with npm for development (they aren't
 * file-loader: exports static files
 * url-loader: can in-line small files as data urls
 * babel-plugin-syntax-object-rest-spread, babel-plugin-transform-object-rest-spread: allow using the spread operator for js objects: (...object)
-* react-addons-test-utils, isparta-instrumenter-loader, karma, karma-coverage, karma-mocha, karma-phantomjs-launcher, karma-sourcemap-loader, karma-spec-reporter, karma-webpack, mocha, phantomjs-prebuilt, phantomjs-polyfill, chai-immutable, chai-as-promised, dirty-chai, sinon, sinon-chai: Unit test dependencies. Karma is the test runner, Mocha is the framework, Chai is the assertion library, PhantomJS is a headless webkit, Sinon is a mocking library, and the rest are supporting libraries for those tools.
+* react-addons-test-utils, isparta-instrumenter-loader, karma, karma-coverage, karma-mocha, karma-phantomjs-launcher, karma-sourcemap-loader, karma-spec-reporter, karma-webpack, mocha, phantomjs-prebuilt, phantomjs-polyfill, chai-immutable, chai-as-promised, dirty-chai, sinon, sinon-chai, enzyme chai-enzyme: Unit test dependencies.
 
 TODO: check HtmlwebpackPlugin, CommonsChunkPlugin
+
+## Testing
+
+[Karma](https://karma-runner.github.io) is the test runner. For now, we are only going to run the tests on [PhantomJS](http://phantomjs.org/) (a headless implementation of WebKit).
+
+[Mocha](http://mochajs.org/) is the test framework we'll use. It lets us write tests in a specification-like style.
+
+[Chai](http://chaijs.com) is the assertion library we are using. We'll use the Expect BDD style. Additional assertions are available through the plugins chai-immutable (assert over Immutable.js objects), dirty-chai (avoid false test results by requiring matchers to be functions - https://github.com/moll/js-must#asserting-on-property-access), chai-as-promised (makes it easier to assert the result of Promises), sinon-chai (assert results of spies, stubs, and mocks), and chai-enzyme (assertions for React components).
+
+[Sinon](http://sinonjs.org/) is a mocking/spy library.
+
+[Istanbul](https://gotwarlost.github.io/istanbul/) is the code coverage tool we will be using.
+
+[ReactTestUtils](http://facebook.github.io/react/docs/test-utils.html) helps us test React components, although it should rarely be used directly. Rather, use Enzyme.
+
+[Enzyme](http://airbnb.io/enzyme/) provides a more convenient interface for testing React components.
 
 ## Application
 
