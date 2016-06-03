@@ -35,6 +35,10 @@ const common = {
       { test: /\.jpg$/, loader: "file-loader" }
     ]
   }
+  // ,
+  // externals: {
+  //   "runtimeConfig": "runtimeConfig"
+  // }
 };
 
 if(TARGET === 'build') {
