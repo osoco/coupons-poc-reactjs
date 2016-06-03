@@ -14,7 +14,7 @@ class App extends Component {
     return (
         <div>
             <ul role="nav">
-                <li><NavLink to="/admin">Admin</NavLink></li>
+                <li><NavLink to="/coupons">Admin</NavLink></li>
                 <li><NavLink to="/shopping">Shop</NavLink></li>
             </ul>
             

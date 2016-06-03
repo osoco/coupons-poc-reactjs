@@ -7,9 +7,9 @@ Logic for constructing new coupons.
 import uuid from 'node-uuid';
 
 
-export default function newCoupon(code) {
+export default function newCoupon(fields) {
     return {
         id: uuid.v4(),
-        code
+        ...fields
     };
 };

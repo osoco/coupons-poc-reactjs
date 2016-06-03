@@ -25,7 +25,7 @@ const CouponList = ({ coupons }) => (
 // These are the props the component expects to receive
 CouponList.propTypes = {
   coupons: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    // id: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired
   }).isRequired).isRequired
 }

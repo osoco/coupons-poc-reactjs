@@ -1,15 +1,12 @@
 import * as actions from './coupons'
-// import * as types from '../../constants/ActionTypes'
 
 describe('actions', () => {
 
-    it('should create an action to delete a coupon', () => {
-        const id = 'some id'
+    it('should create an action to request a new coupon', () => {
         const expectedAction = {
-            type: actions.DELETE_COUPON,
-            id
+            type: actions.REQUEST_NEW_COUPONid
         }
-        expect(actions.deleteCoupon(id)).to.deep.equal(expectedAction)
+        expect(actions.requestNewCoupon()).to.deep.equal(expectedAction)
     })
 
 })

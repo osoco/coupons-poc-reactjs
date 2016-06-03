@@ -6,15 +6,24 @@ This component has been written in React's class style.
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './admin.scss';
-import FullCouponList from '../.././containers/FullCouponList';
+
+import NavLink from '../../components/NavLink.jsx';
+import FullCouponList from '../../containers/FullCouponList';
+import CreateCouponForm  from '../../containers/CreateCouponForm.jsx';
 
 
 class AdminContext extends Component {
   render() {
     return (
         <div>
-            <h1>Admin</h1>
+            <h1>Manage coupons</h1>
+
+            <h2>Create a new coupon</h2>
+            <CreateCouponForm />
+            <h2>Existing coupons</h2>
             <FullCouponList />
+
+
         </div>
     );
   }

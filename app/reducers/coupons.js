@@ -6,38 +6,49 @@ import {List, Map} from 'immutable';
 import * as types from '../actions/coupons';
 import newCoupon from '../store/couponConstructor';
 
+
+
 // Define the initial state for when coupons branch hasn't yet been defined
-const initialState = List([Map(newCoupon('AAAAA')), Map(newCoupon('BBBBB'))]);
+// We are using Immutable.js data structures here.
+const initialState = Map({
+    status: Map({
+        requestingNewCoupon: false,
+        fetchingCoupons: false
+    }),
+    coupons: List()
+});
 
 
-export default function coupons(state = initialState, action) {
+// Handle all actions that affect the coupons branch.
+// The result of this function will replace the previous state.
+export default function couponReducer(state = initialState, action) {
     let couponIndex;
 
-    // Handle all actions that affect the coupons branch
     switch (action.type) {
-        case types.CREATE_COUPON:
-            return state.push(Map(action.coupon));
 
-        case types.UPDATE_COUPON:
-            couponIndex = state.findIndex(coupon => coupon.get('id') === action.id);
+        case types.REQUEST_NEW_COUPON:
+            return state.setIn(["status", "requestingNewCoupon"], true);
 
-            if(couponIndex < 0) {
-                return state;
-            }
+        case types.RECEIVE_NEW_COUPON:
+            return state
+                .setIn(["status", "requestingNewCoupon"], false)
+                .update("coupons", coupons => coupons.push(action.coupon));
 
-            const {type, ...updatedCoupon} = action;
-            return state.mergeIn([couponIndex], updatedCoupon);
+        case types.NEW_COUPON_FAILURE:
+            return state.setIn(["status", "requestingNewCoupon"], false);
 
-        case types.DELETE_COUPON:
-            couponIndex = state.findIndex(coupon => coupon.get('id') === action.id);
+        case types.REQUEST_COUPONS:
+            return state.setIn(["status", "fetchingCoupons"], true);
 
-            if(couponIndex < 0) {
-                return state;
-            }
+        case types.RECEIVE_COUPONS:
+            return state.set("coupons", List(action.coupons.map(newCoupon)));
+            return state.setIn(["status", "fetchingCoupons"], false);
 
-            return state.delete(couponIndex);
+        case types.FETCH_COUPONS_FAILURE:
+            return state.setIn(["status", "fetchingCoupons"], false);
 
         default:
+            // It is important to return the previous state if no changes have been made!
             return state;
     }
 }

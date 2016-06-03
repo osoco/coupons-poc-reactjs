@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "kotatsu build client --babel --minify --config ./webpack.config.js",
-    "start": "kotatsu serve --babel --config ./webpack.config.js --index ./index.html",
+    "start": "kotatsu serve --babel --config ./webpack.config.js --index ./index-dev.html",
     "test": "karma start",
     "tdd": "karma start --auto-watch --no-single-run"
   },
@@ -37,6 +37,7 @@
     "enzyme": "^2.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.19.0",
     "isparta-instrumenter-loader": "^1.0.0",
     "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
@@ -62,6 +63,7 @@
   },
   "dependencies": {
     "immutable": "^3.8.1",
+    "js-yaml": "^3.6.1",
     "node-uuid": "^1.4.7",
     "react": "^15.1.0",
     "react-css-modules": "^3.7.6",
@@ -69,6 +71,9 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.4",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-form": "^5.2.5",
+    "redux-thunk": "^2.1.0",
+    "swagger-client": "^2.1.14"
   }
 }

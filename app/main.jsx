@@ -10,9 +10,10 @@ import LoginContext from './contexts/login/LoginContext.jsx';
 import ShoppingContext from './contexts/shopping/ShoppingContext.jsx';
 import AdminContext from './contexts/admin/AdminContext.jsx';
 import configureStore from './store/configureStore';
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-
+import FullCouponList from './containers/FullCouponList';
+import CreateCouponForm  from './containers/CreateCouponForm.jsx';
 
 
 // TODO pass initial state from local storage if available? Or from server if isomorphic?
@@ -33,8 +34,13 @@ ReactDOM.render(
             <Route path="/" component={LoginContext} />
             <Route path="/app" component={App}>
                 <Route path="/shopping" component={ShoppingContext} />
-                <Route path="/admin" component={AdminContext} />
-
+                <Route path="/coupons" component={AdminContext}>
+                    <IndexRoute component={FullCouponList} />
+                    <Route path="/coupons/new" component={CreateCouponForm} />
+                {/*
+                    <Route path="/coupons/:couponCode" component={CouponDetails} />
+                */}
+                </Route>
             </Route>
         </Router>
     </Provider>,
