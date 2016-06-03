@@ -1,11 +1,10 @@
 /*
-Container component that shows a list of all coupons.
+Container component that shows a for for creating a coupon.
 Acts as a buffer so the presentational components don't need to know about Redux.
 */
 
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import CouponForm from '../components/CouponForm.jsx'
+import React from 'react'
+import CouponForm from '../components/couponForm/CouponForm.jsx'
 import { createCoupon } from '../actions/coupons'
 import {reduxForm} from 'redux-form';
 
@@ -20,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
                 code: formData.code,
                 name: formData.name,
                 description: formData.description,
+                // TODO add the rest of the data to the form
                 numMaxUsage: 2,
                 expirationDate: '2016-07-10',//new Date().toISOString(),
                 discount: 10
@@ -37,6 +37,4 @@ export default reduxForm({
 },
 undefined, // The only state needed by CouponForm is handled by reduxForm
 mapDispatchToProps
-// undefined,
-// {pure: false}
 )(CouponForm);

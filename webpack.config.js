@@ -10,47 +10,42 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   test: path.join(__dirname, 'tests')
-  // style: path.join(__dirname, 'app/main.css')
 };
 
 process.env.BABEL_ENV = TARGET;
 
-const extractCSS = new ExtractTextPlugin('styles/[name].[contenthash].css', {
-    allChunks: true
-  });
+const extractCSS = new ExtractTextPlugin('[name].[contenthash].css', {
+  allChunks: true
+});
 
 const scssLoaders = [
-    'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-    'resolve-url',
-    'sass?sourceMap'
-  ]
+  'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+  'resolve-url',
+  'sass?sourceMap'
+]
 
 const common = {
-  // entry: [path.join(PATHS.app, 'main.jsx'), PATHS.style],
-  // modules loaded on startup
-  entry: path.join(PATHS.app, 'main.jsx'),
+  // application entry point
+  entry: path.join(PATHS.app, 'index.jsx'),
   module: {
     loaders: [
       { test: /\.png$/, loader: "url-loader?limit=100000" },
       { test: /\.jpg$/, loader: "file-loader" }
     ]
   }
-  // ,
-  // externals: {
-  //   "runtimeConfig": "runtimeConfig"
-  // }
 };
 
 if(TARGET === 'build') {
   module.exports = merge(common, {
     output: {
-      path: PATHS.build,
+      path: path.join(PATHS.build, 'dist'),
       filename: '[name].[chunkhash].js',
-      chunkFilename: '[chunkhash].js'
+      chunkFilename: '[chunkhash].js',
+      publicPath: './'
     },
     plugins: [
       new CleanPlugin([PATHS.build]),
-      // Setting DefinePlugin affects React library size!
+      // Setting DefinePlugin reduces React library size
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"'
       }),
@@ -80,12 +75,7 @@ else {
           loaders: ['style?sourceMap'].concat(scssLoaders)
         }
       ]
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: 'index.html'
-      })
-    ]
+    }
   });
 }
 
@@ -99,13 +89,7 @@ if(TARGET === 'test' || TARGET === 'tdd') {
     },
     module: {
       preLoaders: [
-      {
-        //           test: /(\.jsx)|(\.js)$/,
-        //           // exclude this dirs from coverage 
-        //           exclude: /(test|node_modules|bower_components)\//,
-        //           loader: 'isparta-instrumenter-loader'
-        //         }
-        // {
+        {
           test: /\.jsx?$/,
           loaders: ['isparta-instrumenter'],
           include: PATHS.app

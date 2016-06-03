@@ -4,7 +4,6 @@ This component has been written in React's functional style.
 */
 
 import React, { PropTypes } from 'react'
-import {reduxForm} from 'redux-form';
 
 
 // This is the function that will be called to display the component

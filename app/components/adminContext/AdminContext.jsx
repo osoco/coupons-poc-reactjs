@@ -5,9 +5,8 @@ This component has been written in React's class style.
 
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
-import styles from './admin.scss';
+import styles from './defaultStyles.scss';
 
-import NavLink from '../../components/NavLink.jsx';
 import FullCouponList from '../../containers/FullCouponList';
 import CreateCouponForm  from '../../containers/CreateCouponForm.jsx';
 
@@ -19,10 +18,12 @@ class AdminContext extends Component {
             <h1>Manage coupons</h1>
 
             <h2>Create a new coupon</h2>
+            <p>The coupon data is sent to the REST API, and added to the list below if successful.</p>
             <CreateCouponForm />
-            <h2>Existing coupons</h2>
-            <FullCouponList />
 
+            <h2>Existing coupons</h2>
+            <p>The list of coupons is pulled from the Ratpack application every time this component loads.</p>
+            <FullCouponList />
 
         </div>
     );

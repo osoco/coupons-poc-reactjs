@@ -11,7 +11,15 @@ We need to have a current version of Node.js and npm installed. The best option 
 
 This project was created using node v6.2.0 with npm v3.8.9.
 
+We also need to have the [Coupons API backend](https://github.com/osoco/coupons-poc-ratpack) running. The access details can be configured in app/config.js.
+
 ## Usage
+
+After checking out the project (and also after pulling changes that include dependencies), change into the project directory (where package.json is located) and run:
+
+    npm install
+
+This will download all of the dependencies needed.
 
 Start a hot-reloading development server with:
 
@@ -21,17 +29,24 @@ Package the JavaScript for production with:
 
     npm run build
 
-(NOTE: this part still needs some work - the current output doesn't run)
+This will write results to build/dist. Although the distribution includes an index.html file, it will not work if loaded from the file system because index.html is not a valid route within the application. A webserver of somesort is required, for example, 
+
+    python -m SimpleHTTPServer
 
 Run all tests once with:
 
     npm test
 
+A code coverage report will be generated in build/coverage, although the results seem questionable.
+
 Run tests continuously on change with:
 
     npm run tdd
 
+
 ## Build tools
+
+These are the main tools we are using to build and run the application. The only one that needs to be installed manually is npm (see Requirements above).
 
 [npm](https://www.npmjs.com/) is the main build tool used. It handles external dependency management as well as providing a uniform interface for running and building the project.
 
@@ -141,8 +156,6 @@ These are the npm dependencies that are needed at runtime.
 
 Look at https://github.com/acdlite/flux-standard-action, redux-act, redux-actions
 
-Look at redux-thunk
-
 Look at redial
 
 Look at http://redux.js.org/docs/recipes/ComputingDerivedData.html
@@ -151,12 +164,6 @@ Look at normalizr
 
 Look at http://flowtype.org/
 
-Look at react-router and [react-router-redux](https://github.com/reactjs/react-router-redux)
-
 Tests!
 
-Folder organization
-
 Local storage
-
-Call REST API defined in Swagger contract

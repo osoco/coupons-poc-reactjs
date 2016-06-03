@@ -1,7 +1,11 @@
+/*
+A Link that adds the class "active" when the destination page is being shown.
+*/
+
 import React, {Component} from 'react'
 import { Link } from 'react-router'
 import CSSModules from 'react-css-modules';
-import styles from './navLink.scss';
+import styles from './defaultStyles.scss';
 
 
 class NavLink extends Component {

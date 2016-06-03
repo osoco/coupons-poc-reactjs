@@ -8,7 +8,7 @@ import newCoupon from '../store/couponConstructor';
 
 
 
-// Define the initial state for when coupons branch hasn't yet been defined
+// Define the initial state for when the coupons branch hasn't yet been defined
 // We are using Immutable.js data structures here.
 const initialState = Map({
     status: Map({

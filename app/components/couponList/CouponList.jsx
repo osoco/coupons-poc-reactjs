@@ -5,8 +5,8 @@ This component has been written in React's functional style.
 
 import React, { PropTypes } from 'react'
 import CSSModules from 'react-css-modules';
-import styles from './couponList.scss';
-import CouponListItem from './CouponListItem.jsx'
+import styles from './defaultStyles.scss';
+import CouponListItem from '../couponListItem/CouponListItem.jsx'
 
 
 // This is the function that will be called to display the component
@@ -25,7 +25,6 @@ const CouponList = ({ coupons }) => (
 // These are the props the component expects to receive
 CouponList.propTypes = {
   coupons: PropTypes.arrayOf(PropTypes.shape({
-    // id: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired
   }).isRequired).isRequired
 }

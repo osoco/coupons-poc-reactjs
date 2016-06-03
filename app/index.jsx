@@ -5,10 +5,10 @@ This is the entry point into the coupon application.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import App from './App.jsx';
-import LoginContext from './contexts/login/LoginContext.jsx';
-import ShoppingContext from './contexts/shopping/ShoppingContext.jsx';
-import AdminContext from './contexts/admin/AdminContext.jsx';
+import AppLayout from './components/appLayout/AppLayout.jsx';
+import LoginContext from './components/loginContext/LoginContext.jsx';
+import ShoppingContext from './components/shoppingContext/ShoppingContext.jsx';
+import AdminContext from './components/adminContext/AdminContext.jsx';
 import configureStore from './store/configureStore';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -32,7 +32,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={LoginContext} />
-            <Route path="/app" component={App}>
+            <Route path="/app" component={AppLayout}>
                 <Route path="/shopping" component={ShoppingContext} />
                 <Route path="/coupons" component={AdminContext}>
                     <IndexRoute component={FullCouponList} />
