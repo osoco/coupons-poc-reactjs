@@ -11,7 +11,9 @@ We need to have a current version of Node.js and npm installed. The best option 
 
 This project was created using node v6.2.0 with npm v3.8.9.
 
-We also need to have the [Coupons API backend](https://github.com/osoco/coupons-poc-ratpack) running. The access details can be configured in app/config.js.
+### REST backend
+
+We also need to have the [Coupons API backend](https://github.com/osoco/coupons-poc-ratpack) running while we run our application. Just start it up in the background. The access details can be configured in `app/config.js` if necessary.
 
 ## Usage
 
@@ -29,7 +31,7 @@ Package the JavaScript for production with:
 
     npm run build
 
-This will write results to build/dist. Although the distribution includes an index.html file, it will not work if loaded from the file system because index.html is not a valid route within the application. A webserver of somesort is required, for example, 
+This will write results to `build/dist`. Although the distribution includes an index.html file, it will not work if loaded from the file system because "index.html" is not a valid route within the application. A webserver of some sort is required, for example, 
 
     python -m SimpleHTTPServer
 
@@ -46,7 +48,7 @@ Run tests continuously on change with:
 
 ## Build tools
 
-These are the main tools we are using to build and run the application. The only one that needs to be installed manually is npm (see Requirements above).
+These are the main tools we are using to build and run the application. The only one that needs to be installed manually is npm (see [Requirements](#requirements) above).
 
 [npm](https://www.npmjs.com/) is the main build tool used. It handles external dependency management as well as providing a uniform interface for running and building the project.
 
@@ -82,11 +84,13 @@ These are the dependencies we've pulled in with npm for development (they aren't
 * file-loader: exports static files
 * url-loader: can in-line small files as data urls
 * babel-plugin-syntax-object-rest-spread, babel-plugin-transform-object-rest-spread: allow using the spread operator for js objects: (...object)
-* react-addons-test-utils, isparta-instrumenter-loader, karma, karma-coverage, karma-mocha, karma-phantomjs-launcher, karma-sourcemap-loader, karma-spec-reporter, karma-webpack, mocha, phantomjs-prebuilt, phantomjs-polyfill, chai-immutable, chai-as-promised, dirty-chai, sinon, sinon-chai, enzyme chai-enzyme: Unit test dependencies.
+* html-webpack-plugin: Writes an index.html file to the distribution that loads the main js and css files (because their names change every build).
+* react-addons-test-utils, isparta-instrumenter-loader, karma, karma-coverage, karma-mocha, karma-phantomjs-launcher, karma-sourcemap-loader, karma-spec-reporter, karma-webpack, karma-chai, mocha, phantomjs-prebuilt, phantomjs-polyfill, chai, chai-immutable, chai-as-promised, dirty-chai, sinon, sinon-chai, enzyme chai-enzyme: Unit test dependencies.
 
-TODO: check HtmlWebpackPlugin, CommonsChunkPlugin
 
 ## Testing
+
+For now we have only set up unit testing. These are the tools we decided to go with.
 
 [Karma](https://karma-runner.github.io) is the test runner. For now, we are only going to run the tests on [PhantomJS](http://phantomjs.org/) (a headless implementation of WebKit).
 
@@ -104,32 +108,38 @@ TODO: check HtmlWebpackPlugin, CommonsChunkPlugin
 
 ## Application
 
-### Redux
+### Tools
 
-### React
+[React](http://facebook.github.io/react/) is of course what we will use to render the GUI for the application.
 
-### Immutable
+[Redux](http://redux.js.org/) is the framework we have chosen for the "rest" of the application.
 
-### CSS Modules
+[Immutable](http://facebook.github.io/immutable-js/) helps ensure we don't accidentally modify our application state at the wrong time.
 
-### Routing
+[CSS Modules](https://github.com/gajus/react-css-modules) lets is define CSS for each React component.
 
 [react-router](https://github.com/reactjs/react-router) provides a way to sync the view with the browser URL.
 
-[react-router-redux](https://github.com/reactjs/react-router-redux) syncs the URL (managed by react-router) with the store so that replaying actions in the debugger also updates the URL correctly.
-
 For now we are only using client-side routing. Server-side routing is possible, but requires quite a bit of configuration.
+
+[Swagger JS Client](https://github.com/swagger-api/swagger-js) gives us a service based on a Swagger specification, so we don't have to write it ourselves.
 
 ### Runtime dependencies
 
 These are the npm dependencies that are needed at runtime.
 
+* react: The core React library
+* react-dom: Renders React virtual DOM to browser DOM
 * redux: The core Redux library
+* redux-thunk: Allows Redux actions to be functions
+* redux-form: Simplifies binding forms to the store
 * react-redux: React bindings for Redux
 * immutable: Immutable data structures
 * node-uuid: UUID generator
-* react-router
-* react-router-redux
+* react-router: Associates browser URLs with React components
+* react-router-redux: syncs the URL (managed by react-router) with the store so that replaying actions in the debugger also updates the URL correctly.
+* react-css-modules: Allows assigning local css styles to React components
+* swagger-client: Turns a Swagger contract into a service
 
 
 ## Extras
@@ -164,6 +174,6 @@ Look at normalizr
 
 Look at http://flowtype.org/
 
-Tests!
+Add some real tests
 
-Local storage
+Use local storage
